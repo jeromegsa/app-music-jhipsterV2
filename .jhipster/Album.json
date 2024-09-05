@@ -1,0 +1,57 @@
+{
+  "annotations": {
+    "changelogDate": "20240905103352"
+  },
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tags",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbr_music",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image_url",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Album",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "category_name",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "album",
+      "relationshipName": "album_category",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": []
+    },
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "music",
+      "otherEntityRelationshipName": "album",
+      "relationshipName": "album_music",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

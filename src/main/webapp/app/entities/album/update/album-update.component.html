@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-album-heading" data-cy="AlbumCreateUpdateHeading">Créer ou éditer un Album</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tags">Tags</label>
+          <input type="text" class="form-control" name="tags" id="field_tags" data-cy="tags" formControlName="tags" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nbr_music">Nbr Music</label>
+          <input type="number" class="form-control" name="nbr_music" id="field_nbr_music" data-cy="nbr_music" formControlName="nbr_music" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_author">Author</label>
+          <input type="text" class="form-control" name="author" id="field_author" data-cy="author" formControlName="author" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_image_url">Image Url</label>
+          <input type="text" class="form-control" name="image_url" id="field_image_url" data-cy="image_url" formControlName="image_url" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_album_category">Album Category</label>
+          <select
+            class="form-control"
+            id="field_album_category"
+            data-cy="album_category"
+            name="album_category"
+            formControlName="album_category"
+            [compareWith]="compareCategory"
+          >
+            <option [ngValue]="null"></option>
+            @for (categoryOption of categoriesSharedCollection; track $index) {
+              <option [ngValue]="categoryOption">{{ categoryOption.category_name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

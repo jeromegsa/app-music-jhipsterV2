@@ -1,9 +1,7 @@
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary">
-  <div class="container-fluid">
+  <div class="container-fluid d-flex justify-content-center">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
-      <span class="logo-img"></span>
-      <span class="navbar-title">AppMusicJhipsterV2</span>
-      <span class="navbar-version">{{ version }}</span>
+      <span class="navbar-title">AppMusic Pro Max</span>
     </a>
     <a
       class="navbar-toggler d-lg-none"
@@ -20,33 +18,25 @@
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed()">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
-            <span>
-              <fa-icon icon="home"></fa-icon>
-              <span>Accueil</span>
-            </span>
+          <a class="nav-link" routerLink="/" (click)="collapseNavbar()"> <fa-icon icon="home"></fa-icon> Accueil </a>
+        </li>
+        <!-- Display Category, Music, Album directly as menu items -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/category" (click)="collapseNavbar()">
+            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> Category
           </a>
         </li>
-        <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-        @if (account() !== null) {
-          <li
-            ngbDropdown
-            class="nav-item dropdown pointer"
-            display="dynamic"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
-              <span>
-                <fa-icon icon="th-list"></fa-icon>
-                <span>Entités</span>
-              </span>
-            </a>
-            <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-            </ul>
-          </li>
-        }
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/music" (click)="collapseNavbar()">
+            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> Music
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/album" (click)="collapseNavbar()">
+            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> Album
+          </a>
+        </li>
+        <!-- Administration menu as it was -->
         <li
           *jhiHasAnyAuthority="'ROLE_ADMIN'"
           ngbDropdown
@@ -56,10 +46,7 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu" data-cy="adminMenu">
-            <span>
-              <fa-icon icon="users-cog"></fa-icon>
-              <span>Administration</span>
-            </span>
+            <fa-icon icon="users-cog"></fa-icon> Administration
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="admin-menu">
             <li>
@@ -70,51 +57,44 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span>Authority</span>
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon> Authority
               </a>
             </li>
-            <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
             <li>
               <a class="dropdown-item" routerLink="/admin/user-management" routerLinkActive="active" (click)="collapseNavbar()">
-                <fa-icon icon="users" [fixedWidth]="true"></fa-icon>
-                <span>Gestion des utilisateurs</span>
+                <fa-icon icon="users" [fixedWidth]="true"></fa-icon> Gestion des utilisateurs
               </a>
             </li>
             <li>
               <a class="dropdown-item" routerLink="/admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
-                <fa-icon icon="tachometer-alt" [fixedWidth]="true"></fa-icon>
-                <span>Métriques</span>
+                <fa-icon icon="tachometer-alt" [fixedWidth]="true"></fa-icon> Métriques
               </a>
             </li>
             <li>
               <a class="dropdown-item" routerLink="/admin/health" routerLinkActive="active" (click)="collapseNavbar()">
-                <fa-icon icon="heart" [fixedWidth]="true"></fa-icon>
-                <span>Diagnostics</span>
+                <fa-icon icon="heart" [fixedWidth]="true"></fa-icon> Diagnostics
               </a>
             </li>
             <li>
               <a class="dropdown-item" routerLink="/admin/configuration" routerLinkActive="active" (click)="collapseNavbar()">
-                <fa-icon icon="cogs" [fixedWidth]="true"></fa-icon>
-                <span>Configuration</span>
+                <fa-icon icon="cogs" [fixedWidth]="true"></fa-icon> Configuration
               </a>
             </li>
             <li>
               <a class="dropdown-item" routerLink="/admin/logs" routerLinkActive="active" (click)="collapseNavbar()">
-                <fa-icon icon="tasks" [fixedWidth]="true"></fa-icon>
-                <span>Logs</span>
+                <fa-icon icon="tasks" [fixedWidth]="true"></fa-icon> Logs
               </a>
             </li>
             @if (openAPIEnabled) {
               <li>
                 <a class="dropdown-item" routerLink="/admin/docs" routerLinkActive="active" (click)="collapseNavbar()">
-                  <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
-                  <span>API</span>
+                  <fa-icon icon="book" [fixedWidth]="true"></fa-icon> API
                 </a>
               </li>
             }
           </ul>
         </li>
+        <!-- Account menu -->
         <li
           ngbDropdown
           class="nav-item dropdown pointer"
@@ -125,14 +105,9 @@
           @let accountRef = account();
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
             @if (!accountRef?.imageUrl) {
-              <span>
-                <fa-icon icon="user"></fa-icon>
-                <span>Compte</span>
-              </span>
+              <fa-icon icon="user"></fa-icon> Compte
             } @else {
-              <span>
-                <img [src]="accountRef!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />
-              </span>
+              <img [src]="accountRef!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />
             }
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
@@ -145,8 +120,7 @@
                   (click)="collapseNavbar()"
                   data-cy="settings"
                 >
-                  <fa-icon icon="wrench" [fixedWidth]="true"></fa-icon>
-                  <span>Profil</span>
+                  <fa-icon icon="wrench" [fixedWidth]="true"></fa-icon> Profil
                 </a>
               </li>
               <li>
@@ -157,21 +131,18 @@
                   (click)="collapseNavbar()"
                   data-cy="passwordItem"
                 >
-                  <fa-icon icon="lock" [fixedWidth]="true"></fa-icon>
-                  <span>Mot de passe</span>
+                  <fa-icon icon="lock" [fixedWidth]="true"></fa-icon> Mot de passe
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" (click)="logout()" id="logout" data-cy="logout">
-                  <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
-                  <span>Déconnexion</span>
+                  <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon> Déconnexion
                 </a>
               </li>
             } @else {
               <li>
                 <a class="dropdown-item" (click)="login()" id="login" data-cy="login">
-                  <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
-                  <span>S&apos;authentifier</span>
+                  <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon> S'authentifier
                 </a>
               </li>
               <li>
@@ -182,8 +153,7 @@
                   (click)="collapseNavbar()"
                   data-cy="register"
                 >
-                  <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
-                  <span>Créer un compte</span>
+                  <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon> Créer un compte
                 </a>
               </li>
             }

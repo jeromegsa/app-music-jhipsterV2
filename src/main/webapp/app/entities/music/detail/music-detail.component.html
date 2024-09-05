@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (music(); as musicRef) {
+      <div>
+        <h2 data-cy="musicDetailsHeading"><span>Music</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ musicRef.id }}</span>
+          </dd>
+          <dt><span>Title</span></dt>
+          <dd>
+            <span>{{ musicRef.title }}</span>
+          </dd>
+          <dt><span>Duration</span></dt>
+          <dd>
+            <span>{{ musicRef.duration }}</span>
+          </dd>
+          <dt><span>Paroles</span></dt>
+          <dd>
+            <span>{{ musicRef.paroles }}</span>
+          </dd>
+          <dt><span>Created At</span></dt>
+          <dd>
+            <span>{{ musicRef.created_At | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Updated At</span></dt>
+          <dd>
+            <span>{{ musicRef.updated_At | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Album</span></dt>
+          <dd>
+            @if (music()!.album) {
+              <div>
+                <a [routerLink]="['/album', music()!.album?.id]">{{ musicRef.album?.author }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/music', musicRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

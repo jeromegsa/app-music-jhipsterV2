@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (album(); as albumRef) {
+      <div>
+        <h2 data-cy="albumDetailsHeading"><span>Album</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ albumRef.id }}</span>
+          </dd>
+          <dt><span>Name</span></dt>
+          <dd>
+            <span>{{ albumRef.name }}</span>
+          </dd>
+          <dt><span>Tags</span></dt>
+          <dd>
+            <span>{{ albumRef.tags }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ albumRef.description }}</span>
+          </dd>
+          <dt><span>Nbr Music</span></dt>
+          <dd>
+            <span>{{ albumRef.nbr_music }}</span>
+          </dd>
+          <dt><span>Author</span></dt>
+          <dd>
+            <span>{{ albumRef.author }}</span>
+          </dd>
+          <dt><span>Image Url</span></dt>
+          <dd>
+            <span>{{ albumRef.image_url }}</span>
+          </dd>
+          <dt><span>Album Category</span></dt>
+          <dd>
+            @if (album()!.album_category) {
+              <div>
+                <a [routerLink]="['/category', album()!.album_category?.id, 'view']">{{ albumRef.album_category?.category_name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/album', albumRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

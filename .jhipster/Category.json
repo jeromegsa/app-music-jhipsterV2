@@ -1,0 +1,19 @@
+{
+  "annotations": {
+    "changelogDate": "20240905095427"
+  },
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "category_name",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Category",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

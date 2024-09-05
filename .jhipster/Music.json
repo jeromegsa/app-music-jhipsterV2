@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240905100238"
+  },
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "paroles",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "created_At",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "updated_At",
+      "fieldType": "Instant"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Music",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
